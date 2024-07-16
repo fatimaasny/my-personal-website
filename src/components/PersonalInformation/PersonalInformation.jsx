@@ -75,7 +75,7 @@ function InfoProject({
 
 function PersonalInformation() {
   return (
-    <div className="flex flex-row h-screen justify-between pl-[7rem] pr-[7rem] bg-[#f2f3e2]">
+    <div className="flex flex-row h-screen justify-between pl-[7rem] pr-[7rem] ">
       <div className=" w-[45%] pt-[8rem]">
         <p>
           {" "}

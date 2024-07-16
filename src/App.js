@@ -1,12 +1,10 @@
 import "./App.css";
-import Header from "./components/Header/Header";
-import PersonalInformation from "./components/PersonalInformation/PersonalInformation";
+import MyWebPage from "./pages/MyWebPage";
 
 function App() {
   return (
-    <div dir="ltr">
-      <Header />
-      <PersonalInformation />
+    <div>
+      <MyWebPage />
     </div>
   );
 }
