@@ -3,6 +3,7 @@ import Header from "../components/Header/Header";
 import PersonalInformation from "../components/PersonalInformation/PersonalInformation";
 import MyServices from "../components/MyServices/MyServices";
 import MySkills from "../components/MySkills/MySkills";
+import PortfolioCases from "../components/PortfolioCases/PortfolioCases";
 
 function MyWebPage() {
   return (
@@ -11,6 +12,7 @@ function MyWebPage() {
       <PersonalInformation />
       <MyServices />
       <MySkills />
+      <PortfolioCases />
     </div>
   );
 }

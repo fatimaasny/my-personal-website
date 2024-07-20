@@ -1,9 +1,9 @@
-import React from "react";
+import myImage from "../../images/profile2.png";
+import Button from "../Button/Button";
+
 import { FaPlus } from "react-icons/fa";
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
-
-import myImage from "../../images/profile2.png";
 
 function ImageMe() {
   return (
@@ -105,9 +105,10 @@ function PersonalInformation() {
           </button>
         </div>
         <div className="flex flex-row items-center mt-6 ">
-          <button className="w-[12rem] h-[3.5rem]  flex items-center justify-center font-bold text-[0.9rem] shadow-[5px_5px_0px_0px_rgba(0,0,0,0.2)] bg-[#fff] transition ease-in-out delay-1000 hover:bg-[#00ffc8] hover:text-[#fff] rounded-[3rem]  border-solid border-2 border-[#000]">
+          <Button>DOWNLOAD CV</Button>
+          {/* <button className="w-[12rem] h-[3.5rem]  flex items-center justify-center font-bold text-[0.9rem] shadow-[5px_5px_0px_0px_rgba(0,0,0,0.2)] bg-[#fff] transition ease-in-out delay-1000 hover:bg-[#00ffc8] hover:text-[#fff] rounded-[3rem]  border-solid border-2 border-[#000]">
             DOWNLOAD CV
-          </button>
+          </button> */}
           <span className="inline-block w-[3rem] h-[1px] bg-[#000]"></span>
           <p className="ml-8 font-bold text-[0.8rem]">MY SKILLS</p>
         </div>
