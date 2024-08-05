@@ -7,12 +7,12 @@ import PortfolioCases from "../components/PortfolioCases/PortfolioCases";
 
 function MyWebPage() {
   return (
-    <div dir="ltr" className="bg-[#f1f2ed]">
+    <div dir="ltr" className="bg-[#f1f2ed] w-full">
       <Header />
       <PersonalInformation />
-      <MyServices />
-      <MySkills />
-      <PortfolioCases />
+      {/* <MyServices /> */}
+      {/* <MySkills /> */}
+      {/* <PortfolioCases /> */}
     </div>
   );
 }

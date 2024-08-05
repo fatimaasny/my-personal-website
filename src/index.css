@@ -11,10 +11,47 @@
 
 @layer base {
   @font-face {
-    font-family: "Brands";
+    font-family: "fa-brands";
     font-style: normal;
     font-weight: 400;
     font-display: swap;
     src: url(./fonts/fa-brands-400.woff2) format("woff2");
   }
+  @font-face {
+    font-family: "fa-regular";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(./fonts/fa-regular-400.woff2) format("woff2");
+  }
+  @font-face {
+    font-family: "fa-solid";
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url(./fonts/fa-solid-900.woff2) format("woff2");
+  }
+}
+.btn-before {
+  @apply relative z-10 overflow-hidden w-[12rem] h-[3.5rem] 
+  flex items-center justify-center font-bold text-[0.9rem] 
+  shadow-[5px_5px_0px_0px_rgba(0,0,0,0.2)] bg-[#f1f2ed] rounded-[3rem] 
+   border-2 border-[#000]
+   hover:text-[#fff];
+}
+
+.btn-before::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 0;
+  top: 0;
+  left: 0;
+  background: #29a587;
+  transition: height 1s ease-in-out;
+}
+
+.btn-before:hover::before {
+  height: 100%;
 }
