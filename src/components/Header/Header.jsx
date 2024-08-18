@@ -16,7 +16,7 @@ function Header() {
   useEffect(() => {
     const handlerScroll = () => {
       let positionScroll = Math.round(window.scrollY);
-      if (positionScroll >= 100) {
+      if (positionScroll >= 80) {
         setScrollHeader(true);
       } else {
         setScrollHeader(false);
@@ -32,8 +32,8 @@ function Header() {
     <div className="relative">
       {isOverlayMenu && <OverlayMenu hideOverlayHandler={hideOverlayHandler} />}
       <header
-        className={`flex flex-row justify-between items-center w-full px-4  md:px-10 pt-6  ${
-          scrollHeader && "sticky top-0 bg-white lg:bg-#f1f2ed "
+        className={`flex flex-row justify-between z-50 items-center w-full px-4  md:px-10 pt-6  ${
+          scrollHeader && "fixed pb-4 top-0 bg-white lg:bg-[#f1f2ed] "
         }  `}
       >
         <div className="flex flex-row items-center justify-between ">

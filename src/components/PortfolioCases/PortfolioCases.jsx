@@ -82,104 +82,113 @@ function PortfolioCases() {
   };
 
   return (
-    <div className="pl-[6rem] pr-[6rem]  mt-[8rem] pb-[5rem] ">
-      <Title hTitle="PORTFOLIO" spanTitle="Cases" />
-      <div className="flex flex-row justify-center items-center mt-[4rem] mb-[2rem] font-bold">
-        <button
-          className="flex flex-col"
-          onMouseOver={() => isShowHandler("ALL")}
-          onClick={() => {
-            selectedHandler("ALL");
-            listFilterHandler("ALL");
-          }}
-        >
-          <span className={`mb-3 ${selected === "ALL" && "text-[#00ffc8]"}`}>
-            ALL
-          </span>
-          <span
-            className={
-              isShow === "ALL" && "inline-block w-4 h-[2px] bg-[#00ffc8] "
-            }
-          ></span>
-        </button>
-        <button
-          className="flex flex-col ml-8 mr-8"
-          onMouseOver={() => isShowHandler("DEVELOPMENT")}
-          onClick={() => {
-            selectedHandler("DEVELOPMENT");
-            listFilterHandler("DEVELOPMENT");
-          }}
-        >
-          <span
-            className={`mb-3 ${selected === "DEVELOPMENT" && "text-[#00ffc8]"}`}
+    <>
+      <a id="cases"></a>
+      <div className="px-[7rem]  mt-[8rem] md:mt-[9rem] pb-[5rem] ">
+        <Title hTitle="PORTFOLIO" spanTitle="Cases" />
+        <div className="flex flex-row justify-center items-center mt-[4rem] mb-[2rem] font-bold">
+          <button
+            className="flex flex-col"
+            onMouseOver={() => isShowHandler("ALL")}
+            onClick={() => {
+              selectedHandler("ALL");
+              listFilterHandler("ALL");
+            }}
           >
-            DEVELOPMENT
-          </span>
-          <span
-            className={
-              isShow === "DEVELOPMENT" &&
-              "inline-block w-10 h-[2px] bg-[#00ffc8] "
-            }
-          ></span>
-        </button>
-        <button
-          className="flex flex-col ml-8 mr-8"
-          onMouseOver={() => isShowHandler("UI UX DESIGN")}
-          onClick={() => {
-            setSelected("UI UX DESIGN");
-            listFilterHandler("DESIGNER");
-          }}
-        >
-          <span
-            className={`mb-3 ${
-              selected === "UI UX DESIGN" && "text-[#00ffc8]"
-            }`}
+            <span className={`mb-3 ${selected === "ALL" && "text-[#29a587]"}`}>
+              ALL
+            </span>
+            <span
+              className={
+                isShow === "ALL" && "inline-block w-4 h-[2px] bg-[#29a587] "
+              }
+            ></span>
+          </button>
+          <button
+            className="flex flex-col ml-8 mr-8"
+            onMouseOver={() => isShowHandler("DEVELOPMENT")}
+            onClick={() => {
+              selectedHandler("DEVELOPMENT");
+              listFilterHandler("DEVELOPMENT");
+            }}
           >
-            UI UX DESIGN
-          </span>
-          <span
-            className={
-              isShow === "UI UX DESIGN" &&
-              "inline-block w-10 h-[2px] bg-[#00ffc8]  "
-            }
-          ></span>
-        </button>
-        <button
-          className="flex flex-col"
-          onMouseOver={() => isShowHandler("PROGRAMMER")}
-          onClick={() => {
-            setSelected("PROGRAMMER");
-            listFilterHandler("PROGRAMMER");
-          }}
-        >
-          <span
-            className={`mb-3 ${selected === "PROGRAMMER" && "text-[#00ffc8]"}`}
+            <span
+              className={`mb-3 ${
+                selected === "DEVELOPMENT" && "text-[#29a587]"
+              }`}
+            >
+              DEVELOPMENT
+            </span>
+            <span
+              className={
+                isShow === "DEVELOPMENT" &&
+                "inline-block w-10 h-[2px] bg-[#29a587] "
+              }
+            ></span>
+          </button>
+          <button
+            className="flex flex-col ml-8 mr-8"
+            onMouseOver={() => isShowHandler("UI UX DESIGN")}
+            onClick={() => {
+              setSelected("UI UX DESIGN");
+              listFilterHandler("DESIGNER");
+            }}
           >
-            PROGRAMMER
-          </span>
-          <span
-            className={
-              isShow === "PROGRAMMER" &&
-              "inline-block w-10 h-[2px] bg-[#00ffc8]  "
-            }
-          ></span>
-        </button>
+            <span
+              className={`mb-3 ${
+                selected === "UI UX DESIGN" && "text-[#29a587]"
+              }`}
+            >
+              UI UX DESIGN
+            </span>
+            <span
+              className={
+                isShow === "UI UX DESIGN" &&
+                "inline-block w-10 h-[2px] bg-[#29a587]"
+              }
+            ></span>
+          </button>
+          <button
+            className="flex flex-col"
+            onMouseOver={() => isShowHandler("PROGRAMMER")}
+            onClick={() => {
+              setSelected("PROGRAMMER");
+              listFilterHandler("PROGRAMMER");
+            }}
+          >
+            <span
+              className={`mb-3 ${
+                selected === "PROGRAMMER" && "text-[#29a587]"
+              }`}
+            >
+              PROGRAMMER
+            </span>
+            <span
+              className={
+                isShow === "PROGRAMMER" &&
+                "inline-block w-10 h-[2px] bg-[#29a587]"
+              }
+            ></span>
+          </button>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-8">
+          {updatedList.map((l, index) => (
+            <Item
+              key={index}
+              image={l.image}
+              titleP={l.titleP}
+              titleH={l.titleH}
+              seeTitle={l.seeTitle}
+            >
+              {l.parag}
+            </Item>
+          ))}
+        </div>
+        <div className="flex items-center justify-center mt-14">
+          <Button className="btn-before">VIEW MORE</Button>
+        </div>
       </div>
-      <div className="grid grid-cols-3 gap-x-6 gap-y-10">
-        {updatedList.map((l, index) => (
-          <Item
-            key={index}
-            image={l.image}
-            titleP={l.titleP}
-            titleH={l.titleH}
-            seeTitle={l.seeTitle}
-          >
-            {l.parag}
-          </Item>
-        ))}
-      </div>
-      <Button class="mx-auto mt-14">VIEW MORE</Button>
-    </div>
+    </>
   );
 }
 

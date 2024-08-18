@@ -1,16 +1,16 @@
 import { FaTelegramPlane } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 function ListIcons() {
   return (
     <div className="flex gap-4 my-8">
-      <button>
-        <FaInstagram fontSize="1.6rem" />
+      <button className="hover:text-[#29a587] transition-all duration-1000 ease-in-out">
+        <FaGithub fontSize="1.6rem" />
       </button>
-      <button>
+      <button className="hover:text-[#29a587] transition-all duration-1000 ease-in-out">
         <FaTelegramPlane fontSize="1.6rem" />
       </button>
-      <button>
+      <button className="hover:text-[#29a587] transition-all duration-1000 ease-in-out">
         <FaLinkedinIn fontSize="1.6rem" />
       </button>
     </div>
