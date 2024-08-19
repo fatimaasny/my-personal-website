@@ -130,7 +130,9 @@ function PersonalInformation() {
         <div className="flex flex-col items-center mt-10 md:mt-6 md:flex-row ">
           <Button className="btn-before">DOWNLOAD CV</Button>
           <span className="inline-block w-[2px] my-5 md:my-0 h-[3rem] md:w-[3rem] md:h-[2px] bg-[#000]"></span>
-          <p className="md:ml-8 font-bold text-[0.85rem]">MY SKILLS</p>
+          <a href="#skills" className="md:ml-8 font-bold text-[0.85rem]">
+            MY SKILLS
+          </a>
         </div>
       </div>
 

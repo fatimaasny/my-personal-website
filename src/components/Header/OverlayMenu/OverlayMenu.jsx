@@ -1,32 +1,14 @@
 import ListIcons from "../../ListIcons/ListIcons";
+import { Link } from "react-router-dom";
 
 import { IoCloseSharp } from "react-icons/io5";
 import { FaAngleUp } from "react-icons/fa6";
 import { FaAngleDown } from "react-icons/fa6";
 import { useState } from "react";
 
-function PagesOverlay() {
-  return (
-    <div className=" py-4 font-medium bg-white text-[0.9rem]">
-      <ul className="space-y-2">
-        <li>Works (list)</li>
-        <li>Works (grid)</li>
-        <li>Works Single Page</li>
-        <li>Blog</li>
-        <li>Single Post</li>
-      </ul>
-    </div>
-  );
-}
-
 function OverlayMenu(props) {
-  const [isPagesOverlay, setIsPagesOverlay] = useState(false);
-  const togglePagesHandler = () => {
-    setIsPagesOverlay((isPagesOverlay) => !isPagesOverlay);
-  };
-
   return (
-    <div className="fixed top-0  right-0 z-[100] w-full h-screen overflow-y-scroll transition ease-in-out bg-white sm:w-[80%] md:w-[55%] lg:w-[45%] xl:w-[35%] 2s">
+    <div className="fixed top-0  right-0 z-[100] w-full h-screen overflow-y-scroll transition-all duration-1000 ease-in-out bg-white sm:w-[80%] md:w-[55%] lg:w-[45%] xl:w-[35%] ">
       <div className="fixed top-0 right-0 text-right">
         <button className="m-4 xl:m-7" onClick={props.hideOverlayHandler}>
           <IoCloseSharp fontSize="2.2rem" />
@@ -68,15 +50,15 @@ function OverlayMenu(props) {
           <span className="w-[3px] md:h-[88%] h-[80%] inline-block bg-[#000]"></span>
           <span className="inline-block w-8 h-8 rounded-full border-2 shadow-[5px_5px_0px_0px_rgba(0,0,0,0.2)] border-[#000]"></span>
         </div>
-        <ul className="pl-8 w-[60%] mt-8 space-y-4 md:space-y-8 xl:space-y-12 text-[1.4rem] font-bold uppercase py-16 md:py-8 xl:py-12  ">
+        <ul className="pl-8 w-[60%] mt-8 space-y-4 md:space-y-8 xl:space-y-12 text-[1.4rem] font-bold uppercase py-16 md:py-8 xl:py-24  ">
           <li>
-            <a
-              href="#"
+            <Link
+              to={"/"}
               className="hover:text-[#29a587] transition-all duration-500 ease-in-out"
               onClick={props.hideOverlayHandler}
             >
               home
-            </a>
+            </Link>
           </li>
           <li>
             <a
@@ -123,32 +105,13 @@ function OverlayMenu(props) {
               contact
             </a>
           </li>
-          <li className="flex items-center gap-2 " onClick={togglePagesHandler}>
-            <span
-              className={`${
-                isPagesOverlay && "text-[#29a587]"
-              } hover:text-[#29a587] transition duration-1000 ease-in-out cursor-pointer`}
-            >
-              pages
-            </span>
-            <button
-              className={` transition duration-1000  ${
-                isPagesOverlay ? "rotate-180" : "rotate-0"
-              }`}
-            >
-              <FaAngleUp fontSize="1.3rem" />
-            </button>
-          </li>
-          <li className={` ${isPagesOverlay ? "inline" : "hidden"}`}>
-            <PagesOverlay />
-          </li>
+
           <li>
             <ListIcons />
           </li>
         </ul>
       </div>
-
-      <div className="w-full h-2 bg-[#000]"></div>
+      <div className="w-full h-3 bg-[#000]"></div>
     </div>
   );
 }

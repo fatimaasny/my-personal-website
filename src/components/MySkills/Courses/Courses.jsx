@@ -8,10 +8,7 @@ function Courses(props) {
           <span className="text-[#29a587] ml-2">%</span>
         </p>
       </div>
-      <p className="text-[#444] px-4  mt-8">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum dolore
-        perspiciatis sint.
-      </p>
+      <p className="text-[#444] px-4  mt-8">{props.children}</p>
       <div className="flex flex-row items-center mt-6">
         <span
           className={`inline-block ${props.spanW1} h-[2px] bg-[#000]`}

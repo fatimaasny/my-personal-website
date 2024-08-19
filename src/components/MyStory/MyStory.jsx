@@ -27,22 +27,23 @@ const listItemsEducation = [
 
 const listItemsExperience = [
   {
-    title: "Ahmad Site",
+    title: "Courses in University",
+    name: "C++, C#",
+    date: "2011-2015",
+    description:
+      "I did projects in the university with C++ and C# programming languages.",
+  },
+  {
+    title: "Example Project",
     name: "Bodybuilding Coach",
-    date: "2022 - 2024",
+    date: "2023 - 2024",
     description: "I design and develop this site for my lovly coach.",
   },
   {
-    title: "Snappfood",
-    name: "Copy of Snappfood",
+    title: "Freelance",
+    name: "Do freelance projects",
     date: "2024",
-    description: "I studied information technology at Isfahan University. ",
-  },
-  {
-    title: "Fatima Site",
-    name: "With Tailwind",
-    date: "2024",
-    description: "I develop my site with tailwind and i love it so much.",
+    description: "I am doing some Freelance projects ",
   },
 ];
 
