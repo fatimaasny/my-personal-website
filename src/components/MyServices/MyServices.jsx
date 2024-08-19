@@ -36,7 +36,12 @@ function MyServices() {
         <Title hTitle="WHAT I DO" spanTitle="Services" />
         <div className="flex flex-row gap-4 justify-between px-[0.5rem] md:px-[7rem] mt-12">
           {list.map((i, index) => (
-            <Item titleP={i.titleP} titleH={i.titleH} seeTitle="Contact Me">
+            <Item
+              key={index}
+              titleP={i.titleP}
+              titleH={i.titleH}
+              seeTitle="Contact Me"
+            >
               {i.description}
             </Item>
           ))}
