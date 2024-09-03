@@ -7,7 +7,7 @@ import { FaPlus } from "react-icons/fa";
 
 function ImageMe(props) {
   return (
-    <div className="w-[450px] h-[450px] md:w-[650px] md:h-[650px] lg:w-[550px] lg:h-[550px] xl:w-[650px] xl:h-[650px]  mt-[2rem] flex justify-center  md:-mt-5rem overflow-hidden  rounded-full relative   ">
+    <div className="sm:w-[450px] sm:h-[450px] w-[330px] h-[330px] md:w-[650px] md:h-[650px] lg:w-[550px] lg:h-[550px] xl:w-[650px] xl:h-[650px]  mt-[2rem] flex justify-center  md:-mt-5rem overflow-hidden  rounded-full relative   ">
       <img
         src={props.image}
         alt="my-image"
@@ -98,7 +98,7 @@ function PersonalInformation() {
           </span>
         </p>
         <div className="relative lg:hidden">
-          <CirclesShape class=" ml-[20rem]  md:mt-[3rem] md:ml-[29rem] z-10" />
+          <CirclesShape class=" sm:ml-[20rem] ml-[13.5rem] mt-[2rem]  md:mt-[3rem] md:ml-[29rem] z-10  " />
 
           <ImageMe image={myImageBig} />
 
@@ -107,21 +107,21 @@ function PersonalInformation() {
             icon={<FaPlus fontSize="md:2rem 1rem" color="#29a587" />}
             pFirst="YEARS OF"
             Psecond="EXPERIENCE"
-            class="ml-4 -mt-[6rem] md:-mt-[10rem]"
+            class="ml-4  -mt-[6rem] md:-mt-[10rem]"
           />
 
-          <CirclesShape class="md:-mt-[8rem] md:-ml-[4rem] -mt-[5rem] -ml-[3rem] z-10" />
+          <CirclesShape class="md:-mt-[8rem] md:-ml-[4rem] sm:-mt-[4rem] -mt-[6rem] -ml-[1rem] sm:-ml-[3rem]  z-10 " />
 
           <InfoProject
             number="5"
             pFirst="COMPLETED"
             Psecond="PROJECTS"
-            class="md:ml-[27rem] md:-mt-[7rem] ml-[16rem] -mt-[4rem] "
+            class="md:ml-[27rem] md:-mt-[7rem] sm:ml-[16rem] ml-[10rem] -mt-[4rem]   "
           />
 
-          <CirclesShape class="md:-mt-[6rem] md:ml-[34rem] -mt-[4rem] ml-[21rem] z-10" />
+          <CirclesShape class="md:-mt-[6rem] md:ml-[34rem] sm:-mt-[4rem] sm:ml-[21rem] ml-[13.5rem] -mt-[4rem] z-10 " />
         </div>
-        <p className="text-[#666] px-4 lg:px-0 md:w-2/3 lg:w-full  text-[1.2rem]   lg:mt-8 mt-[4rem] lg:text-left text-center">
+        <p className="text-[#666] px-4 lg:px-0 md:w-2/3 lg:w-5/6  text-[1.2rem] lg:mt-8 mt-[6rem] mb-4 lg:text-left text-center">
           From Iran, Gachsaran. I am interested in web design, also i am good at
           managing your team. I love to talk with you about our unique.
         </p>
@@ -137,7 +137,7 @@ function PersonalInformation() {
       </div>
 
       <div className=" w-[55%] h-full  relative hidden lg:block">
-        <CirclesShape class=" ml-[20rem]  md:mt-[3rem] md:ml-[29rem]  z-10 " />
+        <CirclesShape class=" ml-[20rem]  md:mt-[3rem] md:ml-[29rem] lg:ml-[25rem]  z-10 " />
 
         <ImageMe image={myImageBig} />
 
@@ -155,10 +155,10 @@ function PersonalInformation() {
           number="5"
           pFirst="COMPLETED"
           Psecond="PROJECTS"
-          class="md:ml-[27rem] md:-mt-[7rem] lg:ml-[22rem] ml-[16rem] -mt-[4rem] "
+          class="md:ml-[27rem] md:-mt-[6rem] lg:ml-[18rem] ml-[16rem] -mt-[4rem]  "
         />
 
-        <CirclesShape class="md:-mt-[6rem] md:ml-[34rem] lg:ml-[27rem] -mt-[4rem] ml-[21rem] z-10" />
+        <CirclesShape class="md:-mt-[6rem] md:ml-[34rem] lg:ml-[25rem] -mt-[4rem] ml-[21rem] z-10 " />
       </div>
     </div>
   );

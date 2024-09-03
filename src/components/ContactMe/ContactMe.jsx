@@ -35,14 +35,14 @@ function ContactMe() {
   return (
     <>
       <a id="contactme"></a>
-      <div className="mb-20 mt-36 px-[0.5rem] lg:px-[1rem] xl:px-[10rem]">
+      <div className="mb-20 mt-36 px-[0.5rem] lg:px-[2rem] xl:px-[10rem]">
         <Title
           hTitle="CONTACT ME"
           greenTitle="LET'S"
           spanTitle="Talk About Ideas"
         />
-        <div className="flex flex-col gap-y-12 mt-14 lg:flex-row">
-          <div className="flex flex-col w-full gap-y-12 lg:w-1/3">
+        <div className="flex flex-col gap-y-20 mt-14 lg:flex-row">
+          <div className="flex flex-col w-full pl-10 md:pl-[8rem] lg:pl-0 gap-y-12 lg:w-1/3">
             {list.map((i, index) => (
               <ItemContact
                 key={index}
@@ -52,7 +52,7 @@ function ContactMe() {
               />
             ))}
           </div>
-          <div className="flex justify-center w-full  lg:w-2/3">
+          <div className="flex justify-center w-full lg:w-2/3">
             <form className="">
               <div className="flex flex-col gap-8 sm:flex-row ">
                 <div>

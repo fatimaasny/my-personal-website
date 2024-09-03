@@ -64,9 +64,9 @@ function MyStory() {
   return (
     <>
       <a id="resume"></a>
-      <div className="px-[7rem] mt-[5rem]">
+      <div className="xl:px-[7rem] px-[2rem]  mt-[5rem]">
         <Title hTitle="Resume" spanTitle="Story" />
-        <div className="flex flex-col gap-4 mt-16 md:flex-row">
+        <div className="flex flex-col gap-10 mt-16 md:flex-row">
           <Content
             isShowEducation={isShowEducation}
             handlerEducation={handlerEducation}

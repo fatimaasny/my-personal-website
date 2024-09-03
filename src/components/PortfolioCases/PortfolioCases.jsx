@@ -2,36 +2,26 @@ import { useState } from "react";
 import Title from "../Title/Title";
 import Item from "../Item/Item";
 
-import img1 from "../../images/img1.jpeg";
-import img2 from "../../images/img2.jpg";
-import img3 from "../../images/img3.jpg";
+import img1 from "../../images/online-food.jpg";
+import img2 from "../../images/gym-ahmad2.jpeg";
 
 // import Button from "../Button/Button";
 
 const listAll = [
   {
     image: img1,
-    titleP: "DEVELOPMENT",
-    titleH: "Explor",
+    titleP: "Web Design",
+    titleH: "Online Food Website",
     seeTitle: "Project",
-    parag:
-      "    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quis saepe voluptatibus quibusdam optio deserunt!",
+    parag: "I designed and develop this site for more practise and expriment.",
   },
   {
     image: img2,
-    titleP: "DESIGNER",
-    titleH: "UI UX",
+    titleP: "Web Development",
+    titleH: "Gym Website",
     seeTitle: "Project",
     parag:
-      "    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quis saepe voluptatibus quibusdam optio deserunt!",
-  },
-  {
-    image: img3,
-    titleP: "PROGRAMMER",
-    titleH: "Programmer",
-    seeTitle: "Project",
-    parag:
-      "    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil quis saepe voluptatibus quibusdam optio deserunt!",
+      "I designed and develope this site with HTML, CSS, JAVASCRIPT and React for my customer.",
   },
 ];
 
@@ -61,7 +51,7 @@ function PortfolioCases() {
   return (
     <>
       <a id="cases"></a>
-      <div className="px-[7rem]  mt-[8rem] md:mt-[9rem] pb-[5rem] ">
+      <div className=" xl:px-[7rem] px-[1rem] mt-[8rem] md:mt-[4.5rem] pb-[4rem] ">
         <Title hTitle="PORTFOLIO" spanTitle="Cases" />
         {/* <div className="flex flex-row justify-center items-center mt-[4rem] mb-[2rem] font-bold">
           <button
@@ -148,7 +138,7 @@ function PortfolioCases() {
             ></span>
           </button>
         </div> */}
-        <div className="grid grid-cols-1 mt-16 md:grid-cols-2 lg:grid-cols-3 gap-x-2 gap-y-8">
+        <div className="flex flex-row flex-wrap justify-center gap-8 mt-10 sm:px-14 md:px-0 lg:gap-20">
           {listAll.map((l, index) => (
             <Item
               key={index}

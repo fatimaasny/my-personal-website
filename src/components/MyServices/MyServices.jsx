@@ -34,7 +34,7 @@ function MyServices() {
       <a id="services"></a>
       <div className="mt-[8rem]">
         <Title hTitle="WHAT I DO" spanTitle="Services" />
-        <div className="flex flex-row gap-4 justify-between px-[0.5rem] md:px-[7rem] mt-12">
+        <div className="flex flex-row flex-wrap gap-4 justify-between px-[0.5rem] md:px-[7rem] mt-12">
           {list.map((i, index) => (
             <Item
               key={index}
