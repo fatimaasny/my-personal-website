@@ -12,43 +12,45 @@ function Item(props) {
     await setNewItem(value);
   };
 
+  const handlerToggle = async () => {
+    // props.isShow.value === ""
+    if (props.isShow.value === "") {
+      handlerOld("1"); // باز شود
+      await props.handler({ value: props.title, toggle: true });
+    }
+
+    // props.isShow.value === props.title
+    else if (props.isShow.value === props.title) {
+      handlerNew("0");
+      if (props.isShow.toggle === true) {
+        handlerOld("0"); // بسته شود
+        await props.handler({ value: props.title, toggle: false });
+      } else {
+        handlerOld("1"); // باز شود
+        await props.handler({ value: props.title, toggle: true });
+      }
+    }
+
+    // props.isShow.value !== props.title
+    else {
+      await handlerOld("0");
+
+      if (newItem === "0") {
+        // باز شود
+        handlerNew("1");
+        await props.handler({ value: props.title, toggle: false });
+      } else if (newItem === "1") {
+        // بسته شود
+        handlerNew("0");
+        await props.handler({ value: props.title, toggle: true });
+      }
+    }
+  };
+
   return (
     <div className="p-8 border-[#000] border-b-2 border-r-2 relative ">
       <h3
-        onClick={async () => {
-          // props.isShow.value === ""
-          if (props.isShow.value === "") {
-            handlerOld("1"); // باز شود
-            await props.handler({ value: props.title, toggle: true });
-          }
-
-          // props.isShow.value === props.title
-          else if (props.isShow.value === props.title) {
-            handlerNew("0");
-            if (props.isShow.toggle === true) {
-              handlerOld("0"); // بسته شود
-              await props.handler({ value: props.title, toggle: false });
-            } else {
-              handlerOld("1"); // باز شود
-              await props.handler({ value: props.title, toggle: true });
-            }
-          }
-
-          // props.isShow.value !== props.title
-          else {
-            await handlerOld("0");
-
-            if (newItem === "0") {
-              // باز شود
-              handlerNew("1");
-              await props.handler({ value: props.title, toggle: false });
-            } else if (newItem === "1") {
-              // بسته شود
-              handlerNew("0");
-              await props.handler({ value: props.title, toggle: true });
-            }
-          }
-        }}
+        onClick={handlerToggle}
         className="font-bold lg:text-[1.6rem] text-[1.3rem] mb-4 cursor-pointer "
       >
         {props.title}
@@ -70,9 +72,7 @@ function Item(props) {
         props.isShow.toggle === false && <p>new +1</p>}
 
       <span
-        onClick={async () => {
-          // همون کدهایی میشه که توی بالا مینویسیم
-        }}
+        onClick={handlerToggle}
         className={`hover:shadow-none transition-all duration-1000 ease-in-out cursor-pointer absolute z-10 bottom-[-1.5rem] right-[-1.5rem] ${
           props.isShow.toggle ? "bg-[#f1f2ed]" : "bg-[#fff]"
         } flex justify-center items-center w-12 h-12 border-2 border-[#000] rounded-full shadow-[5px_5px_0px_0px_rgba(0,0,0,0.2)]`}
