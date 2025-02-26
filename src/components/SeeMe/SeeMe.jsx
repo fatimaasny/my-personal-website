@@ -2,13 +2,13 @@ import { FaArrowRight } from "react-icons/fa6";
 
 function SeeMe(props) {
   return (
-    <div className=" mt-10 flex flex-row justify-between">
+    <div className="flex flex-row justify-between mt-10 ">
       <p className="flex flex-row items-center cursor-pointer">
-        <span className="font-bold mr-6">
+        <span className="mr-6 font-bold">
           See <span>{props.title}</span>
         </span>
         <button>
-          <FaArrowRight fontSize="1.1rem" color="#00ffc8" />
+          <FaArrowRight fontSize="1.1rem" color="#29a587" />
         </button>
       </p>
       <div className="w-[100px]  rounded-tl-[55px] overflow-hidden font-bold">
