@@ -26,7 +26,7 @@ export default function useLongpressWithCircles(contentRef, circlesRef) {
     const currentX = e.clientX || e.touches[0].clientX;
     const delta = positionX.current - currentX;
 
-    if (Math.abs(delta) > 240) {
+    if (Math.abs(delta) > 350) {
       contentRef.current.scrollLeft += delta; // move list
 
       let newIndex = circleGreen;

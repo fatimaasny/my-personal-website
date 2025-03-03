@@ -3,7 +3,6 @@ import Item from "../Item/Item";
 import { useEffect, useRef, useState } from "react";
 import useLongpressWithCircles from "../../hooks/useLongpressWithCircles";
 
-
 const list = [
   {
     titleP: "Web Application Design",
@@ -76,7 +75,7 @@ function MyServices() {
           ref={contentRef}
           {...handlers}
           style={{ scrollbarWidth: "none" }}
-          className="grid grid-flow-col w-full  grid-cols-minmax-100-1fr  md:grid-cols-calc-50 lg:grid-cols-calc-33 gap-x-6 px-[2rem] md:px-[4rem] xl:px-[7rem] mt-12 overflow-x-scroll"
+          className="grid grid-flow-col w-[80%] mx-auto bg-pink-400  grid-cols-minmax-100-1fr  md:grid-cols-calc-50 lg:grid-cols-calc-33 gap-x-6 px-[2rem] md:px-[4rem] xl:px-[7rem] mt-12 overflow-x-scroll"
         >
           {list.map((i, index) => (
             <Item
@@ -95,8 +94,10 @@ function MyServices() {
               <span
                 key={i}
                 ref={(el) => (circlesRef.current[i] = el)}
-                className={`w-2 h-2 inline-block border-2 border-solid border-[#000] rounded-full ${
-                  i === circleGreen ? "bg-[#29a587] scale-150" : "bg-[#fff]"
+                className={` inline-block border-2 border-solid border-[#000] rounded-full ${
+                  i === circleGreen
+                    ? "bg-[#29a587] w-4 h-4"
+                    : "bg-[#fff] w-2 h-2"
                 } `}
               ></span>
               {i < circlesCount - 1 && (

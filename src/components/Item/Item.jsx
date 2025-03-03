@@ -5,7 +5,7 @@ import { FaArrowRight } from "react-icons/fa6";
 function Item(props) {
   return (
     // <Card class="pt-6 px-6 pb-2 md:w-[20rem] lg:w-[18rem] xl:w-[24rem]  w-full">
-    <Card class="pt-6 px-6 pb-2  w-full max-w-[20rem]  ">
+    <Card class="pt-6 px-6 pb-2 mr-2  w-full  min-w-[20rem] max-w-[21rem] ">
       {props.image && <Image source={props.image} class="" />}
       <p
         className={`font-bold text-[0.9rem] ${
