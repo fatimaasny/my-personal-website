@@ -1,7 +1,8 @@
 import Button from "../Button/Button";
 import ListIcons from "../ListIcons/ListIcons";
 
-import myImageBig from "../../images/fatima-profile.jpg";
+// import myImageBig from "../../images/fatima-profile.jpg";
+import myImageBig from "../../images/fatimaa.jpg";
 
 import { FaPlus } from "react-icons/fa";
 

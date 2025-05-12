@@ -1,4 +1,5 @@
 function ItemContact(props) {
+  const phoneNumber = "+989174348436";
   return (
     <div className="flex gap-x-10 ">
       <div className="flex items-center justify-center">
@@ -9,7 +10,13 @@ function ItemContact(props) {
       </div>
       <div className="flex flex-col">
         <h2 className="font-bold text-[1.9rem] font-Caveat">{props.title}</h2>
-        <p className="text-[1rem] text-[#444]">{props.text}</p>
+        {props.id === "phone" ? (
+          <a href={`tel:${phoneNumber}`} className="text-blue-400">
+            {props.text}
+          </a>
+        ) : (
+          <p className="text-[1rem] text-[#444]">{props.text}</p>
+        )}
       </div>
     </div>
   );

@@ -32,7 +32,9 @@ function Item(props) {
             {props.seeTitle === "Contact Me" ? (
               <a href="#contactme">{props.seeTitle}</a>
             ) : (
-              <a href="#project">{props.seeTitle}</a>
+              <a href={props.url} target="_blank">
+                {props.seeTitle}
+              </a>
             )}
           </span>
           <button>

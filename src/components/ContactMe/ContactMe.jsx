@@ -1,5 +1,6 @@
 import Title from "../Title/Title";
 import Button from "../Button/Button";
+import Input from "../Input/Input";
 
 import { LiaCitySolid } from "react-icons/lia";
 import { BsPerson } from "react-icons/bs";
@@ -7,30 +8,130 @@ import { HiOutlineMail } from "react-icons/hi";
 import { FaRegAddressBook } from "react-icons/fa";
 import ItemContact from "./ItemContact";
 import { FaStarOfLife } from "react-icons/fa6";
+import { useRef } from "react";
+
+import { useInput } from "../../hooks/useInput";
+
+import { isEmpty, isEmail, isText } from "../../util/Validation";
+
+const list = [
+  {
+    id: "address",
+    icon: <LiaCitySolid fontSize="1.3rem" />,
+    title: "Address",
+    text: "Iran, Gachsaran",
+  },
+  {
+    id: "work",
+    icon: <BsPerson fontSize="1.3rem" />,
+    title: "Freelance",
+    text: "Available Right Now",
+  },
+  {
+    id: "email",
+    icon: <HiOutlineMail fontSize="1.3rem" />,
+    title: "Email",
+    text: "sinayi.fatima@gmail.com",
+  },
+  {
+    id: "phone",
+    icon: <FaRegAddressBook fontSize="1.3rem" />,
+    title: "Phone",
+    text: "+98 917 - 434 - 8436",
+  },
+];
 
 function ContactMe() {
-  const list = [
-    {
-      icon: <LiaCitySolid fontSize="1.3rem" />,
-      title: "Address",
-      text: "Iran, Gachsaran",
-    },
-    {
-      icon: <BsPerson fontSize="1.3rem" />,
-      title: "Freelance",
-      text: "Available Right Now",
-    },
-    {
-      icon: <HiOutlineMail fontSize="1.3rem" />,
-      title: "Email",
-      text: "sinayi.fatima@gmail.com",
-    },
-    {
-      icon: <FaRegAddressBook fontSize="1.3rem" />,
-      title: "Phone",
-      text: "+98 917 - 434 - 8436",
-    },
-  ];
+  const formRef = useRef(null);
+
+  function getData() {
+    if (formRef.current) {
+      const myFd = new FormData(formRef.current);
+      const data = Object.fromEntries(myFd.entries());
+
+      return data;
+    }
+  }
+
+  const {
+    handleEditedState: handleFullNameEditedState,
+    handleValidate: handleFullNameValidate,
+    handleReset: handleFullNameReset,
+    error: fullNameError,
+  } = useInput();
+
+  const {
+    handleEditedState: handleEmailEditedState,
+    handleValidate: handleEmailValidate,
+    handleReset: handleEmailReset,
+    error: emailError,
+  } = useInput();
+
+  const {
+    handleEditedState: handleSubjectEditedState,
+    handleValidate: handleSubjectValidate,
+    handleReset: handleSubjectReset,
+    error: subjectError,
+  } = useInput();
+
+  const {
+    handleEditedState: handleMessageEditedState,
+    handleValidate: handleMessageValidate,
+    handleReset: handleMessageReset,
+    error: messageError,
+  } = useInput();
+
+  function handleReset() {
+    handleFullNameReset();
+    handleEmailReset();
+    handleSubjectReset();
+    handleMessageReset();
+    formRef.current.reset();
+  }
+
+  function handleSubmitForm(e) {
+    e.preventDefault();
+    const data = getData();
+
+    console.log("data: ", data);
+
+    let exist = false;
+
+    const fullNameIsInValid = fullNameError || isEmpty(data.fullName);
+    if (fullNameIsInValid) {
+      handleFullNameEditedState(true);
+      handleFullNameValidate(false);
+      exist = true;
+    }
+
+    const emailIsInValid = emailError || isEmpty(data.email);
+    if (emailIsInValid) {
+      handleEmailEditedState(true);
+      handleEmailValidate(false);
+      exist = true;
+    }
+
+    const subjectIsInValid = subjectError || isEmpty(data.subject);
+    if (subjectIsInValid) {
+      handleSubjectEditedState(true);
+      handleSubjectValidate(false);
+      exist = true;
+    }
+
+    const messageIsInValid = messageError || isEmpty(data.message);
+    if (messageIsInValid) {
+      handleMessageEditedState(true);
+      handleMessageValidate(false);
+      exist = true;
+    }
+    if (exist) {
+      console.log("invalid data");
+      return;
+    }
+
+    console.log("valid form");
+    handleReset();
+  }
 
   return (
     <>
@@ -41,11 +142,12 @@ function ContactMe() {
           greenTitle="LET'S"
           spanTitle="Talk About Ideas"
         />
-        <div className="flex flex-col gap-y-20 mt-14 lg:flex-row">
-          <div className="flex flex-col w-full pl-10 md:pl-[8rem] lg:pl-0 gap-y-12 lg:w-1/3">
-            {list.map((i, index) => (
+        <div className="flex flex-col mt-4 gap-y-2 lg:flex-row">
+          <div className="flex flex-col w-full pl-10 md:pl-[8rem]  lg:pl-0 mt-10 gap-y-16 lg:w-1/3">
+            {list.map((i) => (
               <ItemContact
-                key={index}
+                key={i.id}
+                id={i.id}
                 icon={i.icon}
                 title={i.title}
                 text={i.text}
@@ -53,65 +155,67 @@ function ContactMe() {
             ))}
           </div>
           <div className="flex justify-center w-full lg:w-2/3">
-            <form className="">
+            <form onSubmit={handleSubmitForm} ref={formRef}>
               <div className="flex flex-col gap-8 sm:flex-row ">
-                <div>
-                  <label
-                    className="flex cursor-pointer mb-4 font-bold gap-x-2 text-[0.9rem] pl-6"
-                    htmlFor="fullName"
-                  >
-                    <span> YOUR FULL NAME</span>
-                    <FaStarOfLife color="#29a587" fontSize="0.5rem" />
-                  </label>
-                  <input
-                    type="text"
-                    id="fullName"
-                    className="rounded-full border-2  sm:w-[19rem] w-full h-16 pl-4  border-[#000]"
-                  />
-                </div>
-                <div>
-                  <label
-                    className="flex mb-4 font-bold cursor-pointer gap-x-2 text-[0.9rem] pl-6"
-                    htmlFor="email"
-                  >
-                    <span> YOUR EMAIL ADDRESS</span>
-                    <FaStarOfLife color="#29a587" fontSize="0.5rem" />
-                  </label>
-                  <input
-                    type="text"
-                    id="email"
-                    className="rounded-full border-2 sm:w-[19rem] w-full pl-4 h-16 border-[#000]"
-                  />
-                </div>
-              </div>
-              <div className="mt-8">
-                <label
-                  className="flex mb-4 cursor-pointer font-bold gap-x-2 text-[0.9rem] pl-6"
-                  htmlFor="subject"
-                >
-                  <span> YOUR SUBJECT</span>
-                  <FaStarOfLife color="#29a587" fontSize="0.5rem" />
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  className="rounded-full pl-4 border-2 md:w-[41rem] sm:w-[40rem] w-full h-16 border-[#000]"
+                <Input
+                  id="fullName"
+                  label="YOUR FULL NAME"
+                  className="sm:w-[19rem] w-full"
+                  error={
+                    fullNameError && "please enter  at least 4 characters!!"
+                  }
+                  name="fullName"
+                  onFocus={() => {
+                    handleFullNameEditedState(false);
+                  }}
+                  onBlur={() => {
+                    handleFullNameEditedState(true);
+                    handleFullNameValidate(isText(getData().fullName));
+                  }}
+                />
+                <Input
+                  id="email"
+                  label="YOUR EMAIL ADDRESS"
+                  className="sm:w-[19rem] w-full"
+                  error={emailError && "please enter valid email!!"}
+                  name="email"
+                  onFocus={() => {
+                    handleEmailEditedState(false);
+                  }}
+                  onBlur={() => {
+                    handleEmailEditedState(true);
+                    handleEmailValidate(isEmail(getData().email));
+                  }}
                 />
               </div>
-              <div className="mt-8">
-                <label
-                  className="flex mb-4 cursor-pointer font-bold gap-x-2 text-[0.9rem] pl-6"
-                  htmlFor="subject"
-                >
-                  <span> YOUR MESSAGE</span>
-                  <FaStarOfLife color="#29a587" fontSize="0.5rem" />
-                </label>
-                <textarea
-                  type="text"
-                  id="subject"
-                  className="rounded-3xl pt-4 pl-4 border-2 md:w-[41rem] sm:w-[40rem] w-full h-36  border-[#000]"
-                ></textarea>
-              </div>
+              <Input
+                id="subject"
+                label="YOUR SUBJECT"
+                className="md:w-[41rem] sm:w-[40rem] w-full"
+                error={subjectError && "please enter at least 4 characters !!"}
+                name="subject"
+                onFocus={() => {
+                  handleSubjectEditedState(false);
+                }}
+                onBlur={() => {
+                  handleSubjectEditedState(true);
+                  handleSubjectValidate(isText(getData().subject));
+                }}
+              />
+              <Input
+                id="message"
+                label="YOUR MESSAGE"
+                error={messageError && "please enter  at least 4 characters!!"}
+                name="message"
+                onFocus={() => {
+                  handleMessageEditedState(false);
+                }}
+                onBlur={() => {
+                  handleMessageEditedState(true);
+                  handleMessageValidate(isText(getData().message));
+                }}
+              />
+
               <div className="flex items-center justify-end gap-8 mt-10">
                 <p className="flex gap-2">
                   <FaStarOfLife fontSize="0.5rem" />
@@ -120,69 +224,6 @@ function ContactMe() {
                 <Button className="btn-before">SEND MESSAGE</Button>
               </div>
             </form>
-            {/* <div className="md:w-[14rem] md:h-[14rem] w-[10rem] h-[12rem] bg-pink-300  md:bottom-[-8rem] md:left-[-3rem]  bottom-[-43rem] left-[-5rem] rounded-l-full rounded-br-full   z-10 overflow-hidden  absolute ">
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px] "></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px] "></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px] "></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px] "></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px] "></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px] "></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px] "></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px] "></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]  "></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px] "></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-              <span className="inline-block  w-[6px] h-[6px] mt-[6px] border-solid border-2 border-black rounded-full mx-[6px] md:mx-[12px]"></span>
-            </div> */}
           </div>
         </div>
       </div>

@@ -75,7 +75,7 @@ function MyServices() {
           ref={contentRef}
           {...handlers}
           style={{ scrollbarWidth: "none" }}
-          className="grid grid-flow-col w-[80%] mx-auto bg-pink-400  grid-cols-minmax-100-1fr  md:grid-cols-calc-50 lg:grid-cols-calc-33 gap-x-6 px-[2rem] md:px-[4rem] xl:px-[7rem] mt-12 overflow-x-scroll"
+          className="grid grid-flow-col w-[90%]   mx-auto cursor-grab  grid-cols-minmax-100-1fr  md:grid-cols-calc-50 lg:grid-cols-calc-33 gap-x-6 px-[2rem] md:px-[4rem] xl:px-[7rem] mt-12 overflow-x-scroll"
         >
           {list.map((i, index) => (
             <Item
@@ -105,11 +105,6 @@ function MyServices() {
               )}
             </>
           ))}
-          {/* <span className="w-2 h-2 inline-block border-2 border-solid border-[#000] bg-[#fff] rounded-full"></span>
-          <span className="w-5 h-[2px] inline-block bg-[#000]"></span>
-          <span className="w-2 h-2 inline-block border-2 border-solid border-[#000] bg-[#fff] rounded-full"></span>
-          <span className="w-5 h-[2px] inline-block bg-[#000]"></span>
-          <span className="w-3 h-3 inline-block border-2 border-solid border-[#000] bg-[#00ffc8] rounded-full"></span> */}
         </div>
       </div>
     </>

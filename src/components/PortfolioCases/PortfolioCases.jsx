@@ -14,6 +14,7 @@ const listAll = [
     titleH: "Online Food Website",
     seeTitle: "Project",
     parag: "I designed and develop this site for more practise and expriment.",
+    url: "http://snappfood.fatimasinayi.com/",
   },
   {
     image: img2,
@@ -22,6 +23,7 @@ const listAll = [
     seeTitle: "Project",
     parag:
       "I designed and develope this site with HTML, CSS, JAVASCRIPT and React for my customer.",
+    url: "http://gymcoach.fatimasinayi.com/",
   },
 ];
 
@@ -146,6 +148,7 @@ function PortfolioCases() {
               titleP={l.titleP}
               titleH={l.titleH}
               seeTitle={l.seeTitle}
+              url={l.url}
             >
               {l.parag}
             </Item>
