@@ -27,7 +27,7 @@ function Input({ id, label, className, error, ...rest }) {
       )}
       <div className="h-8 ">
         {error && (
-          <p className="pt-2 pl-2  text-red-500 text-[0.9rem">{error}</p>
+          <p className="pt-2 pl-2  text-red-500 text-[0.9rem]">{error}</p>
         )}
       </div>
     </div>

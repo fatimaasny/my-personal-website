@@ -1,11 +1,10 @@
-import { useState } from "react";
 import Title from "../Title/Title";
 import Item from "../Item/Item";
 
-import img1 from "../../images/online-food.jpg";
+import img1 from "../../images/snappfood2.jpg";
 import img2 from "../../images/gym-ahmad2.jpeg";
-
-// import Button from "../Button/Button";
+import img3 from "../../images/travel3.png";
+import img4 from "../../images/kidstyle.jpg";
 
 const listAll = [
   {
@@ -13,7 +12,8 @@ const listAll = [
     titleP: "Web Design",
     titleH: "Online Food Website",
     seeTitle: "Project",
-    parag: "I designed and develop this site for more practise and expriment.",
+    parag:
+      "I designed and develop this web site for more practise and expriment with calling APIs of snappfood.",
     url: "http://snappfood.fatimasinayi.com/",
   },
   {
@@ -22,8 +22,26 @@ const listAll = [
     titleH: "Gym Website",
     seeTitle: "Project",
     parag:
-      "I designed and develope this site with HTML, CSS, JAVASCRIPT and React for my customer.",
+      "I designed and develop this web site with HTML, CSS, JAVASCRIPT and React for a great athlete.",
     url: "http://gymcoach.fatimasinayi.com/",
+  },
+  {
+    image: img3,
+    titleP: "Web Development",
+    titleH: "Travel Album Website",
+    seeTitle: "Project",
+    parag:
+      "I designed and develop this web site to work with api in my system and hope to love it.",
+    url: "http://travelalbum.fatimasinayi.com/",
+  },
+  {
+    image: img4,
+    titleP: "Web Development",
+    titleH: "Kid Style Website",
+    seeTitle: "Project",
+    parag:
+      "I designed and develop this web site to have a real expriment with shopping cart and try it.",
+    url: "http://kidstyle.fatimasinayi.com/",
   },
 ];
 
@@ -53,94 +71,10 @@ function PortfolioCases() {
   return (
     <>
       <a id="cases"></a>
-      <div className=" xl:px-[7rem] px-[1rem] mt-[8rem] md:mt-[4.5rem] pb-[4rem] ">
+      <div className="  px-[1rem] mt-[8rem] md:mt-[4.5rem] pb-[4rem]  ">
         <Title hTitle="PORTFOLIO" spanTitle="Cases" />
-        {/* <div className="flex flex-row justify-center items-center mt-[4rem] mb-[2rem] font-bold">
-          <button
-            className="flex flex-col"
-            onMouseOver={() => isShowHandler("ALL")}
-            onClick={() => {
-              selectedHandler("ALL");
-              listFilterHandler("ALL");
-            }}
-          >
-            <span className={`mb-3 ${selected === "ALL" && "text-[#29a587]"}`}>
-              ALL
-            </span>
-            <span
-              className={
-                isShow === "ALL" && "inline-block w-4 h-[2px] bg-[#29a587] "
-              }
-            ></span>
-          </button>
-          <button
-            className="flex flex-col ml-8 mr-8"
-            onMouseOver={() => isShowHandler("DEVELOPMENT")}
-            onClick={() => {
-              selectedHandler("DEVELOPMENT");
-              listFilterHandler("DEVELOPMENT");
-            }}
-          >
-            <span
-              className={`mb-3 ${
-                selected === "DEVELOPMENT" && "text-[#29a587]"
-              }`}
-            >
-              DEVELOPMENT
-            </span>
-            <span
-              className={
-                isShow === "DEVELOPMENT" &&
-                "inline-block w-10 h-[2px] bg-[#29a587] "
-              }
-            ></span>
-          </button>
-          <button
-            className="flex flex-col ml-8 mr-8"
-            onMouseOver={() => isShowHandler("UI UX DESIGN")}
-            onClick={() => {
-              setSelected("UI UX DESIGN");
-              listFilterHandler("DESIGNER");
-            }}
-          >
-            <span
-              className={`mb-3 ${
-                selected === "UI UX DESIGN" && "text-[#29a587]"
-              }`}
-            >
-              UI UX DESIGN
-            </span>
-            <span
-              className={
-                isShow === "UI UX DESIGN" &&
-                "inline-block w-10 h-[2px] bg-[#29a587]"
-              }
-            ></span>
-          </button>
-          <button
-            className="flex flex-col"
-            onMouseOver={() => isShowHandler("PROGRAMMER")}
-            onClick={() => {
-              setSelected("PROGRAMMER");
-              listFilterHandler("PROGRAMMER");
-            }}
-          >
-            <span
-              className={`mb-3 ${
-                selected === "PROGRAMMER" && "text-[#29a587]"
-              }`}
-            >
-              PROGRAMMER
-            </span>
-            <span
-              className={
-                isShow === "PROGRAMMER" &&
-                "inline-block w-10 h-[2px] bg-[#29a587]"
-              }
-            ></span>
-          </button>
-        </div> */}
-        <div className="flex flex-row flex-wrap justify-center gap-8 mt-10 sm:px-14 md:px-0 lg:gap-20">
+
+        <div className="grid grid-cols-1 gap-4 mt-10 justify-items-center place-items-center xl:grid-cols-4 md:grid-cols-2">
           {listAll.map((l, index) => (
             <Item
               key={index}
@@ -154,9 +88,6 @@ function PortfolioCases() {
             </Item>
           ))}
         </div>
-        {/* <div className="flex items-center justify-center mt-14">
-          <Button className="btn-before">VIEW MORE</Button>
-        </div> */}
       </div>
     </>
   );

@@ -18,15 +18,16 @@ export default function useLongpressWithCircles(contentRef, circlesRef) {
     startPressTimer(e);
   }
   function handleOnMove(e) {
-    if (isLongpress.current) {
-      console.log("islongpress");
-      return;
-    }
+    if (!isLongpress.current) return;
 
     const currentX = e.clientX || e.touches[0].clientX;
     const delta = positionX.current - currentX;
 
+    // console.log("delta: ", delta);
+
+    // with item : 320px
     if (Math.abs(delta) > 350) {
+      // console.log("delta in if: ", delta);
       contentRef.current.scrollLeft += delta; // move list
 
       let newIndex = circleGreen;
@@ -39,6 +40,7 @@ export default function useLongpressWithCircles(contentRef, circlesRef) {
       }
 
       if (newIndex !== circleGreen) {
+        // console.log("green new : ", newIndex);
         setCircleGreen(newIndex);
       }
       positionX.current = currentX;

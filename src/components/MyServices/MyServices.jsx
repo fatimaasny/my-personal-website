@@ -66,16 +66,21 @@ function MyServices() {
       ? 2
       : 0;
 
+  useEffect(() => {
+    // console.log("size: ", screenSize, "  green: ", circleGreen);
+  }, [screenSize, circleGreen]);
+
   return (
     <>
       <a id="services"></a>
-      <div className="mt-[8rem]">
+      <div className="mt-[8rem] xl:px-[7rem]  px-[1rem]">
         <Title hTitle="WHAT I DO" spanTitle="Services" />
         <div
           ref={contentRef}
           {...handlers}
           style={{ scrollbarWidth: "none" }}
-          className="grid grid-flow-col w-[90%]   mx-auto cursor-grab  grid-cols-minmax-100-1fr  md:grid-cols-calc-50 lg:grid-cols-calc-33 gap-x-6 px-[2rem] md:px-[4rem] xl:px-[7rem] mt-12 overflow-x-scroll"
+          // میخوام فقط یک ردیف باشه
+          className="grid grid-flow-col cursor-grab auto-cols-[100%] md:auto-cols-[50%] lg:auto-cols-[33%] gap-x-2 overflow-x-auto mt-12  w-full"
         >
           {list.map((i, index) => (
             <Item
