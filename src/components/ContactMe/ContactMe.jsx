@@ -46,6 +46,7 @@ function ContactMe() {
   const formRef = useRef(null);
   const messageRef = useRef("");
   const dialogRef = useRef();
+  const timeoutRef = useRef();
 
   function getData() {
     if (formRef.current) {
@@ -119,10 +120,16 @@ function ContactMe() {
   };
 
   function handleShowModal() {
-    dialogRef.current.showModal();
-    setTimeout(() => {
-      dialogRef.current.close();
-    }, 2000);
+    if (dialogRef.current) {
+      dialogRef.current.showModal();
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(() => {
+        dialogRef.current.close();
+        timeoutRef.current = null;
+      }, 2000);
+    }
   }
   function handleSubmitForm(e) {
     e.preventDefault();
